@@ -38,6 +38,8 @@ public class QuizTaker {
 	public static JTextArea allA;
 	
 
+	//added a comment to commit lel
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
