@@ -37,7 +37,7 @@ public class QuizTaker {
 	public static JButton quitButt;
 	public static JTextArea allA;
 	
-
+// testing this is the main
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
