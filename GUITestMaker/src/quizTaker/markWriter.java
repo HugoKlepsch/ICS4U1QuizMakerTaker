@@ -37,6 +37,21 @@ public class markWriter {
 	 */
 	public markWriter(QStorage qstorage, String userName, String filename) throws IOException {
 		this.filename = filename;
+		this.userName = userName;
+		fileout = new PrintWriter(new FileWriter(this.filename));
+		this.totalQuestions = qstorage.getNumQues();
+		questionStatus = new int[qstorage.getNumQues()];
+		for (int i = 0; i < questionStatus.length; i++) {
+			questionStatus[i] = unanswered;
+		}
+	}
+	/**
+	 * @throws IOException 
+	 * 
+	 */
+	public markWriter(QStorage qstorage, String filename) throws IOException {
+		this.filename = filename;
+		this.userName = "No Name Entered";
 		fileout = new PrintWriter(new FileWriter(this.filename));
 		this.totalQuestions = qstorage.getNumQues();
 		questionStatus = new int[qstorage.getNumQues()];
@@ -50,6 +65,7 @@ public class markWriter {
 	 */
 	public markWriter(int totalQuestions, String userName, String filename) throws IOException {
 		this.filename = filename;
+		this.userName = userName;
 		fileout = new PrintWriter(new FileWriter(this.filename));
 		this.totalQuestions = totalQuestions;
 		questionStatus = new int[totalQuestions];
@@ -58,6 +74,19 @@ public class markWriter {
 		}
 		
 	}
+	/**
+	 * @throws IOException 
+	 * 
+	 */
+	public markWriter(int totalQuestions, String filename) throws IOException {
+		this.filename = filename;
+		this.userName = "No Name Entered";
+		fileout = new PrintWriter(new FileWriter(this.filename));
+		this.totalQuestions = totalQuestions;
+		questionStatus = new int[totalQuestions];
+		for (int i = 0; i < questionStatus.length; i++) {
+			questionStatus[i] = unanswered;
+		}	}
 	
 	
 	/**
