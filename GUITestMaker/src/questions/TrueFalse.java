@@ -16,6 +16,7 @@ public class TrueFalse {
 	String type = "TF";
 	String question;
 	boolean correctAns;
+	int quesNum;
 	
 	/**
 	 * @param question
@@ -25,6 +26,13 @@ public class TrueFalse {
 		super();
 		this.question = question;
 		this.correctAns = correctAns;
+	}
+	
+	public TrueFalse(String question, boolean correctAns, int quesNum) {
+		super();
+		this.question = question;
+		this.correctAns = correctAns;
+		this.quesNum = quesNum;
 	}
 	
 	/**
@@ -51,6 +59,16 @@ public class TrueFalse {
 	public void setCorrectAns(boolean correctAns) {
 		this.correctAns = correctAns;
 	}
+	
+	
+	public int getQuesNum() {
+		return quesNum;
+	}
+
+	public void setQuesNum(int quesNum) {
+		this.quesNum = quesNum;
+	}
+
 	/**
 	 * @author Graham
 	 * @param answer the user's answer to check
