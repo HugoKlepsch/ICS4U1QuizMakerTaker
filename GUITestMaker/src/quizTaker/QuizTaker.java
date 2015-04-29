@@ -64,7 +64,7 @@ public class QuizTaker {
 			} else if (e.getSource() == checkAnsButt) {
 				
 			} else if (e.getSource() == quitButt) {
-				
+				frame.dispose();
 			}
 			
 		}
