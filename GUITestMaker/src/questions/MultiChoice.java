@@ -2,9 +2,8 @@
 		 Title: MultiChoice.java
 		 Programmer: hugo
 		 Date of creation: Apr 20, 2015
-		 Description: 
-*/
-
+		 Description: Class to hold information to recreate a multiple choice question
+ */
 
 package questions;
 
@@ -13,16 +12,16 @@ package questions;
  *
  */
 public class MultiChoice {
-	String type = "MC";
+	String type = "MC"; // two char type for easy identification in the text file.
 	String question;
 	String[] options = new String[5];
-	static final String[] ABCDE = {"a", "b", "c", "d", "e"};
-	int correctInd;
-	int quesNum;
-	
-	
+	static final String[] ABCDE = { "a", "b", "c", "d", "e" }; // this is here to allow more than 4, but as of now only
+																// four can be added
+	int correctInd; 
+	int quesNum; //used in markwriter to see what order the question is
+
 	/**
-	 * @param question
+	 * @param question the question to store
 	 * @param options is an array of string options that the user can answer
 	 * @param correctInd is the correct answer (a = 0, b = 1, c = 2 etc.)
 	 */
@@ -33,7 +32,6 @@ public class MultiChoice {
 		this.correctInd = correctInd;
 	}
 
-	
 	/**
 	 * @param question
 	 * @param options are the options for the multiple choice buttons, max five. (a - e inclusive)
@@ -56,7 +54,7 @@ public class MultiChoice {
 			correctInd = 4;
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @param question
@@ -72,7 +70,6 @@ public class MultiChoice {
 		this.quesNum = quesNum;
 	}
 
-	
 	/**
 	 * @param question
 	 * @param options are the options for the multiple choice buttons, max five. (a - e inclusive)
@@ -97,7 +94,7 @@ public class MultiChoice {
 			correctInd = 4;
 		}
 	}
-	
+
 	/**
 	 * @return the question
 	 */
@@ -145,9 +142,9 @@ public class MultiChoice {
 	 */
 	public String getType() {
 		return type;
-		
+
 	}
-	
+
 	/**
 	 * 
 	 * @return the question number
@@ -164,47 +161,44 @@ public class MultiChoice {
 		this.quesNum = quesNum;
 	}
 
-
 	/**
 	 * @author Graham
 	 * @param answer the user's answer to check
 	 * @return true if correct, false if incorrect
 	 * @Description accepts answer as an integer (a = 0, b = 1, c = 2 etc.)
 	 */
-	public boolean checkAnswer(int answer){
-		if(answer == this.correctInd)
+	public boolean checkAnswer(int answer) {
+		if (answer == this.correctInd)
 			return true;
 		else
 			return false;
 	}
+
 	/**
 	 * @author Graham
 	 * @param answer the user's answer to check
 	 * @return true if correct, false if incorrect
 	 * @Description accepts answer as a string (a, b, c, d, e)
 	 */
-	public boolean checkAnswer(String answer){
-		if(answer.equalsIgnoreCase(ABCDE[this.correctInd]))
+	public boolean checkAnswer(String answer) {
+		if (answer.equalsIgnoreCase(ABCDE[this.correctInd]))
 			return true;
 		else
 			return false;
-		
+
 	}
 
-
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		
-		
+
 		String question = "Question: " + this.question + "\n";
 		String answer = "Answer: " + ABCDE[this.correctInd] + "\n";
-		
+
 		return question + answer;
 	}
-	
-	
+
 }
