@@ -16,6 +16,7 @@ public class ShortAnswer {
 	String type = "SA";
 	String question;
 	String answer;
+	int quesNum;
 	
 	
 	
@@ -28,6 +29,13 @@ public class ShortAnswer {
 		super();
 		this.question = question;
 		this.answer = answer;
+	}
+	
+	public ShortAnswer(String question, String answer, int quesNum) {
+		super();
+		this.question = question;
+		this.answer = answer;
+		this.quesNum = quesNum;
 	}
 	/**
 	 * @return the question
@@ -52,6 +60,15 @@ public class ShortAnswer {
 	 */
 	public void setAnswer(String answer) {
 		this.answer = answer;
+	}
+	
+	
+	
+	public int getQuesNum() {
+		return quesNum;
+	}
+	public void setQuesNum(int quesNum) {
+		this.quesNum = quesNum;
 	}
 	/**
 	 * @author Graham

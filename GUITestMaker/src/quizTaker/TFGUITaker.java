@@ -82,7 +82,7 @@ public class TFGUITaker {
 	}
 	
 	public TFGUITaker(TrueFalse question){
-		this.origQues = question;
+		origQues = question;
 		
 		qRoot = new JFrame("True/False question");
 		Toolkit tk = Toolkit.getDefaultToolkit();

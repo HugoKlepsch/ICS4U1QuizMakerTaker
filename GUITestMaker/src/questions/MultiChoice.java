@@ -18,6 +18,7 @@ public class MultiChoice {
 	String[] options = new String[5];
 	static final String[] ABCDE = {"a", "b", "c", "d", "e"};
 	int correctInd;
+	int quesNum;
 	
 	
 	/**
@@ -42,6 +43,38 @@ public class MultiChoice {
 		super();
 		this.question = question;
 		this.options = options;
+		if (correctLetter.equalsIgnoreCase("a")) {
+			correctInd = 0;
+		} else if (correctLetter.equalsIgnoreCase("b")) {
+			correctInd = 1;
+		} else if (correctLetter.equalsIgnoreCase("c")) {
+			correctInd = 2;
+		} else if (correctLetter.equalsIgnoreCase("d")) {
+			correctInd = 3;
+		} else if (correctLetter.equalsIgnoreCase("e")) {
+			correctInd = 4;
+		}
+	}
+	
+	public MultiChoice(String question, String[] options, int correctInd, int quesNum) {
+		super();
+		this.question = question;
+		this.options = options;
+		this.correctInd = correctInd;
+		this.quesNum = quesNum;
+	}
+
+	
+	/**
+	 * @param question
+	 * @param options are the options for the multiple choice buttons, max five. (a - e inclusive)
+	 * @param correctLetter is the letter (a, b, c, d, e) that is correct
+	 */
+	public MultiChoice(String question, String[] options, String correctLetter, int quesNum) {
+		super();
+		this.question = question;
+		this.options = options;
+		this.quesNum = quesNum;
 		if (correctLetter.equalsIgnoreCase("a")) {
 			correctInd = 0;
 		} else if (correctLetter.equalsIgnoreCase("b")) {
@@ -105,6 +138,16 @@ public class MultiChoice {
 		
 	}
 	
+	public int getQuesNum() {
+		return quesNum;
+	}
+
+
+	public void setQuesNum(int quesNum) {
+		this.quesNum = quesNum;
+	}
+
+
 	/**
 	 * @author Graham
 	 * @param answer the user's answer to check
