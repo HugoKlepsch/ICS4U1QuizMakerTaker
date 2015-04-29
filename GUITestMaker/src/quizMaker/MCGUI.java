@@ -24,7 +24,7 @@ import javax.swing.JTextField;
 import questions.MultiChoice;
 
 /**
- * @author hugo
+ * @author hugo and graham
  *
  */
 public class MCGUI {
@@ -39,7 +39,7 @@ public class MCGUI {
 	public static ButtonHandler onClick = new ButtonHandler();
 	
 //	public static final boolean flase = false;
-	
+	// our button handler class
 	private static class ButtonHandler implements ActionListener {
 		boolean hasEnteredQuestion = false;
 		boolean hasSelectedCorrectAns = false;
@@ -49,6 +49,7 @@ public class MCGUI {
 		 */
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			//enables and disables buttons depending on what we want the user to do
 			if (e.getSource() == questionBox) {
 				hasEnteredQuestion = true;
 				if (hasEnteredQuestion && hasSelectedCorrectAns) {
@@ -62,6 +63,7 @@ public class MCGUI {
 			} else if (e.getSource() == cancelButt) {
 				qRoot.dispose();
 				hasEnteredQuestion = hasSelectedCorrectAns = false;
+			// creates a new multiple choice question and saves it in the qStorage object and closes the window
 			} else if (e.getSource() == saveButt) {
 				String[] options = {opt1.getText(), opt2.getText(), opt3.getText(), opt4.getText()};
 				int correctInd = 0;
@@ -86,6 +88,7 @@ public class MCGUI {
 	}
 
 	public MCGUI() {
+		//sets up the GUI
 		qRoot = new JFrame("Multiple choice question");
 		Toolkit tk = Toolkit.getDefaultToolkit();
 		Dimension dm = tk.getScreenSize();

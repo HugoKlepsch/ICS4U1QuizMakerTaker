@@ -43,6 +43,7 @@ public class TFGUI{
 	 * 
 	 */
 	public TFGUI() {
+		//sets up the GUI
 		qRoot = new JFrame("True/False question");
 		Toolkit tk = Toolkit.getDefaultToolkit();
 		Dimension dm = tk.getScreenSize();
@@ -109,7 +110,7 @@ public class TFGUI{
 		 */
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			
+			//creates a new true/false question and saves it in the qStorage object
 			if (e.getSource() == saveButt) {
 				boolean correctAns = ( trueCorrect.isSelected() ? true : false );
 				String question = questionBox.getText();
