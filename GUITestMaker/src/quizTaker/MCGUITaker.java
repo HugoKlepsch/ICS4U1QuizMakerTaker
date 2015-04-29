@@ -86,7 +86,7 @@ public class MCGUITaker {
 	}
 	
 	public MCGUITaker(MultiChoice question){
-		this.origQues = question;
+		origQues = question;
 		
 		qRoot = new JFrame("True/False question");
 		Toolkit tk = Toolkit.getDefaultToolkit();
