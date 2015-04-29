@@ -37,6 +37,7 @@ public class QuizTaker {
 	public static JButton checkAnsButt;
 	public static JButton quitButt;
 	public static JTextArea allA;
+	private static int qCount = 0;
 	
 
 	//added a comment to commit lel
@@ -111,11 +112,13 @@ public class QuizTaker {
 		 * @Description: ( ͡° ͜ʖ ͡°)
 		 */
 	public static void openNextQ() {
+		qCount++;
 		int result = qStorage.getCurrentQType();
 //		System.out.println("openNextQ result" + result);
 		switch (result) {
 		case QStorage.tf:
 			TrueFalse tempTFQ = qStorage.getNextQTF();
+			tempTFQ.setQuesNum(qCount);
 //			System.out.println("openNextQ tempQ.getQuestion()" + tempQ.getQuestion());
 			EventQueue.invokeLater(new Runnable() {
 				public void run() {
@@ -132,6 +135,7 @@ public class QuizTaker {
 			break;
 		case QStorage.mc:
 			MultiChoice tempMCQ = qStorage.getNextQMC();
+			tempMCQ.setQuesNum(qCount);
 			EventQueue.invokeLater(new Runnable() {
 				public void run() {
 					try {
@@ -148,6 +152,7 @@ public class QuizTaker {
 			break;
 		case QStorage.sa:
 			ShortAnswer tempSAQ = qStorage.getNextQSA();
+			tempSAQ.setQuesNum(qCount);
 			EventQueue.invokeLater(new Runnable() {
 				public void run() {
 					try {
