@@ -21,9 +21,9 @@ import quizMaker.QStorage;
  *
  */
 public class markWriter {
-	final int unanswered = 0;
-	final int correct = 1;
-	final int incorrect = 2;
+	public final int unanswered = 0;
+	public final int correct = 1;
+	public final int incorrect = 2;
 	int totalQuestions = 0;
 	double average;
 	String userName;
@@ -60,7 +60,12 @@ public class markWriter {
 	}
 	
 	
-
+	/**
+	 * @param questionStatus the questionStatus to set
+	 */
+	public void setQuestionStatus(int status, int index) {
+		this.questionStatus[index] = status;
+	}
 	/**
 	 * @return the correctCount
 	 */
