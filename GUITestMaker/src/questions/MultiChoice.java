@@ -9,7 +9,7 @@
 package questions;
 
 /**
- * @author hugo
+ * @author hugo and graham
  *
  */
 public class MultiChoice {
@@ -43,6 +43,7 @@ public class MultiChoice {
 		super();
 		this.question = question;
 		this.options = options;
+		// assigns the correct index based on the letter
 		if (correctLetter.equalsIgnoreCase("a")) {
 			correctInd = 0;
 		} else if (correctLetter.equalsIgnoreCase("b")) {
@@ -56,6 +57,13 @@ public class MultiChoice {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param question
+	 * @param options is an array of string options that the user can answer
+	 * @param correctInd is the correct answer (a = 0, b = 1, c = 2 etc.)
+	 * @param quesNum is the number identifier for the question
+	 */
 	public MultiChoice(String question, String[] options, int correctInd, int quesNum) {
 		super();
 		this.question = question;
@@ -69,12 +77,14 @@ public class MultiChoice {
 	 * @param question
 	 * @param options are the options for the multiple choice buttons, max five. (a - e inclusive)
 	 * @param correctLetter is the letter (a, b, c, d, e) that is correct
+	 * @param quesNum is the number identifier for the question
 	 */
 	public MultiChoice(String question, String[] options, String correctLetter, int quesNum) {
 		super();
 		this.question = question;
 		this.options = options;
 		this.quesNum = quesNum;
+		// assigns the correct index based on the letter
 		if (correctLetter.equalsIgnoreCase("a")) {
 			correctInd = 0;
 		} else if (correctLetter.equalsIgnoreCase("b")) {
@@ -138,11 +148,18 @@ public class MultiChoice {
 		
 	}
 	
+	/**
+	 * 
+	 * @return the question number
+	 */
 	public int getQuesNum() {
 		return quesNum;
 	}
 
-
+	/**
+	 * 
+	 * @param quesNum the question number of the question
+	 */
 	public void setQuesNum(int quesNum) {
 		this.quesNum = quesNum;
 	}

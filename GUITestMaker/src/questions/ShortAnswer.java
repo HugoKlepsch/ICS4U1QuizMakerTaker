@@ -9,7 +9,7 @@
 package questions;
 
 /**
- * @author hugo
+ * @author hugo and graham
  *
  */
 public class ShortAnswer {
@@ -22,8 +22,8 @@ public class ShortAnswer {
 	
 	
 	/**
-	 * @param question
-	 * @param answer
+	 * @param question is the question
+	 * @param answer is the answer
 	 */
 	public ShortAnswer(String question, String answer) {
 		super();
@@ -31,6 +31,12 @@ public class ShortAnswer {
 		this.answer = answer;
 	}
 	
+	/**
+	 * 
+	 * @param question is the question
+	 * @param answer is the answer
+	 * @param quesNum is the question number identifier
+	 */
 	public ShortAnswer(String question, String answer, int quesNum) {
 		super();
 		this.question = question;
@@ -62,11 +68,17 @@ public class ShortAnswer {
 		this.answer = answer;
 	}
 	
-	
-	
+	/**
+	 * 
+	 * @return the question number
+	 */
 	public int getQuesNum() {
 		return quesNum;
 	}
+	/**
+	 * 
+	 * @param quesNum is the question number
+	 */
 	public void setQuesNum(int quesNum) {
 		this.quesNum = quesNum;
 	}

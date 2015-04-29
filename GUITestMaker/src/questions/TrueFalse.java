@@ -9,7 +9,7 @@
 package questions;
 
 /**
- * @author hugo
+ * @author hugo and graham
  *
  */
 public class TrueFalse {
@@ -19,15 +19,20 @@ public class TrueFalse {
 	int quesNum;
 	
 	/**
-	 * @param question
-	 * @param correctAns
+	 * @param question is the question
+	 * @param correctAns is the correct answer, true or false
 	 */
 	public TrueFalse(String question, boolean correctAns) {
 		super();
 		this.question = question;
 		this.correctAns = correctAns;
 	}
-	
+	/**
+	 * 
+	 * @param question is the question
+	 * @param correctAns is the correct answer, true or false
+	 * @param quesNum is the question number identifier
+	 */
 	public TrueFalse(String question, boolean correctAns, int quesNum) {
 		super();
 		this.question = question;
@@ -59,12 +64,17 @@ public class TrueFalse {
 	public void setCorrectAns(boolean correctAns) {
 		this.correctAns = correctAns;
 	}
-	
-	
+	/**
+	 * 
+	 * @return the question number
+	 */
 	public int getQuesNum() {
 		return quesNum;
 	}
-
+	/**
+	 * 
+	 * @param quesNum is the question number
+	 */
 	public void setQuesNum(int quesNum) {
 		this.quesNum = quesNum;
 	}
