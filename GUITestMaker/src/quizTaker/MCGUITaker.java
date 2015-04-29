@@ -14,6 +14,7 @@ import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -21,6 +22,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+
 import questions.MultiChoice;
 import quizMaker.QuizMaker;
 
@@ -53,14 +55,19 @@ public class MCGUITaker {
 				rad2.setEnabled(false);
 				rad3.setEnabled(false);
 				rad4.setEnabled(false);
-				checkAns();
+				try {
+					checkAns();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				//TODO save
 			} else if (e.getSource() == closeButt) {
 				qRoot.dispose();
 			}
 		}
 		
-		private void checkAns() {
+		private void checkAns() throws IOException {
 			int correctInd = MCGUITaker.origQues.getCorrectInd();
 			int selectedInd = 0;
 			JRadioButton[] radArray = {rad1, rad2, rad3, rad4};
@@ -76,10 +83,13 @@ public class MCGUITaker {
 			
 			if (selectedInd == correctInd) {
 				radArray[selectedInd].setBackground(correct);
+				QuizTaker.markWriter.setQuestionStatus(markWriter.correct, origQues.getQuesNum());
 			} else {
 				radArray[selectedInd].setBackground(incorrect);
 				radArray[correctInd].setBackground(correct);
+				QuizTaker.markWriter.setQuestionStatus(markWriter.incorrect, origQues.getQuesNum());
 			}
+			QuizTaker.markWriter.writeMarks();
 			
 		}
 		

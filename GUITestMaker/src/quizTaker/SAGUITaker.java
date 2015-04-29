@@ -16,11 +16,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
+
+
+
+import java.io.IOException;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
 import javax.swing.JTextField;
 
 import questions.ShortAnswer;
@@ -54,29 +58,38 @@ public class SAGUITaker {
 				closeButt.setEnabled(true);
 				userAns.setEnabled(false);
 				userAns.setDisabledTextColor(black);
-				checkAns();
+				try {
+					checkAns();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				//TODO save answer
 			} else if (e.getSource() == closeButt) {
 				qRoot.dispose();
 			}
 		}
-		private void checkAns(){
+		private void checkAns() throws IOException{
 			String userAnsText = userAns.getText();
 			if(userAnsText.equalsIgnoreCase("")){
 				userAns.setBackground(incorrect);
 				correctAns.setBackground(correct);
 				correctAns.setText(origQues.getAnswer());
+				QuizTaker.markWriter.setQuestionStatus(markWriter.incorrect, origQues.getQuesNum());
 			} else{
 				if(origQues.checkAnswer(userAnsText)){
 					userAns.setBackground(correct);
+					QuizTaker.markWriter.setQuestionStatus(markWriter.correct, origQues.getQuesNum());
 					
 				} else{
 					userAns.setBackground(incorrect);
 					correctAns.setBackground(correct);
 					correctAns.setText(origQues.getAnswer());
+					QuizTaker.markWriter.setQuestionStatus(markWriter.incorrect, origQues.getQuesNum());
 					//TODO save answer
 				}
 			}
+			QuizTaker.markWriter.writeMarks();
 		}
 	}
 	public SAGUITaker(ShortAnswer question){
