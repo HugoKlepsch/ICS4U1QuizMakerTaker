@@ -126,6 +126,9 @@ public class QuizTaker {
 					}
 				}
 			});
+			if (qStorage.getCurrentQType() == 0) {
+				nextButt.setEnabled(false);
+			}
 			break;
 		case QStorage.mc:
 			MultiChoice tempMCQ = qStorage.getNextQMC();
@@ -139,6 +142,9 @@ public class QuizTaker {
 					}
 				}
 			});
+			if (qStorage.getCurrentQType() == 0) {
+				nextButt.setEnabled(false);
+			}
 			break;
 		case QStorage.sa:
 			ShortAnswer tempSAQ = qStorage.getNextQSA();
@@ -152,6 +158,9 @@ public class QuizTaker {
 					}
 				}
 			});
+			if (qStorage.getCurrentQType() == 0) {
+				nextButt.setEnabled(false);
+			}
 			break;
 			
 		default:
