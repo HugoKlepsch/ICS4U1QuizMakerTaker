@@ -14,6 +14,7 @@ import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -54,29 +55,40 @@ public class TFGUITaker {
 				closeButt.setEnabled(true);
 				ansTrueRad.setEnabled(false);
 				ansFalseRad.setEnabled(false);
-				checkAns();
+				try {
+					checkAns();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				//TODO save answer
 			} else if (e.getSource() == closeButt) {
 				qRoot.dispose();
 			}
 		}
 		
-		private void checkAns() {
+		private void checkAns() throws IOException {
 			if (ansTrueRad.isSelected()) { //if true is selected,
 				if (origQues.checkAns(true)) { //and true is correct
 					ansTrueRad.setBackground(correct);
+					QuizTaker.markWriter.setQuestionStatus(markWriter.correct, origQues.getQuesNum());
 				} else { //true is not correct
 					ansTrueRad.setBackground(incorrect);
 					ansFalseRad.setBackground(correct);
+					QuizTaker.markWriter.setQuestionStatus(markWriter.incorrect, origQues.getQuesNum());
 				}
 			} else { //if false is selected
 				if (origQues.checkAns(false)) { //and false is correct
 					ansFalseRad.setBackground(correct);
+					QuizTaker.markWriter.setQuestionStatus(markWriter.correct, origQues.getQuesNum());
+
 				} else { //false is not correct
 					ansFalseRad.setBackground(incorrect);
 					ansTrueRad.setBackground(correct);
+					QuizTaker.markWriter.setQuestionStatus(markWriter.incorrect, origQues.getQuesNum());
 				}
 			}
+			QuizTaker.markWriter.writeMarks();
 		}
 		
 	}

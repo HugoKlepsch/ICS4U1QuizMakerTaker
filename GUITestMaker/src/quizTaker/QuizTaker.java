@@ -38,11 +38,12 @@ public class QuizTaker {
 	public static JButton quitButt;
 	public static JTextArea allA;
 	private static int qCount = 0;
+	public static markWriter markWriter;
 	
 
 	//added a comment to commit lel
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -53,7 +54,7 @@ public class QuizTaker {
 				}
 			}
 		});
-
+		markWriter = new markWriter(qStorage, "QuizResult.quiz");
 	}
 	
 	private static class ButtonHandler implements ActionListener{

@@ -21,9 +21,9 @@ import quizMaker.QStorage;
  *
  */
 public class markWriter {
-	public final int unanswered = 0;
-	public final int correct = 1;
-	public final int incorrect = 2;
+	public final static int unanswered = 0;
+	public final static int correct = 1;
+	public final static int incorrect = 2;
 	int totalQuestions = 0;
 	double average;
 	String userName;
@@ -38,7 +38,7 @@ public class markWriter {
 	public markWriter(QStorage qstorage, String userName, String filename) throws IOException {
 		this.filename = filename;
 		this.userName = userName;
-		fileout = new PrintWriter(new FileWriter(this.filename));
+		
 		this.totalQuestions = qstorage.getNumQues();
 		questionStatus = new int[qstorage.getNumQues()];
 		for (int i = 0; i < questionStatus.length; i++) {
@@ -52,7 +52,6 @@ public class markWriter {
 	public markWriter(QStorage qstorage, String filename) throws IOException {
 		this.filename = filename;
 		this.userName = "No Name Entered";
-		fileout = new PrintWriter(new FileWriter(this.filename));
 		this.totalQuestions = qstorage.getNumQues();
 		questionStatus = new int[qstorage.getNumQues()];
 		for (int i = 0; i < questionStatus.length; i++) {
@@ -66,7 +65,6 @@ public class markWriter {
 	public markWriter(int totalQuestions, String userName, String filename) throws IOException {
 		this.filename = filename;
 		this.userName = userName;
-		fileout = new PrintWriter(new FileWriter(this.filename));
 		this.totalQuestions = totalQuestions;
 		questionStatus = new int[totalQuestions];
 		for (int i = 0; i < questionStatus.length; i++) {
@@ -81,7 +79,6 @@ public class markWriter {
 	public markWriter(int totalQuestions, String filename) throws IOException {
 		this.filename = filename;
 		this.userName = "No Name Entered";
-		fileout = new PrintWriter(new FileWriter(this.filename));
 		this.totalQuestions = totalQuestions;
 		questionStatus = new int[totalQuestions];
 		for (int i = 0; i < questionStatus.length; i++) {
@@ -150,9 +147,11 @@ public class markWriter {
 		 * Date of creation: Apr 10, 2015 
 		 * @param: None
 		 * @return: None
+	 * @throws IOException 
 		 * @Description: ( ͡° ͜ʖ ͡°)
 		 */
-	public void writeMarks() {
+	public void writeMarks() throws IOException {
+		fileout = new PrintWriter(new FileWriter(this.filename));
 		fileout.println("UserName: " + userName);
 		fileout.println(new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date()));
 		fileout.println("Average: " + getAverage());
