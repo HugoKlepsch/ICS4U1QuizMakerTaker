@@ -29,7 +29,7 @@ public class QStorage {
 	private int mcCount = 0;
 	private int saCount = 0;
 	private int orderCount = 0;
-	private int totalQ = 0;
+	public static int totalQ = 0;
 
 	private TrueFalse[] tfArray = new TrueFalse[100];
 	private MultiChoice[] mcArray = new MultiChoice[100];
@@ -40,6 +40,8 @@ public class QStorage {
 	public static final int mc = 2;
 	public static final int sa = 3;
 	private String filename;
+	public boolean isDoneReading;
+	 
 	
 	/**
 	 * 
@@ -115,6 +117,7 @@ public class QStorage {
 	}
 	
 	public void readFile() throws IOException{
+		isDoneReading = false;
 		BufferedReader fileIn = new BufferedReader(new FileReader(this.filename));
 		Gson json = new Gson();
 		this.orderArray = json.fromJson(fileIn.readLine(), int[].class);
@@ -128,7 +131,7 @@ public class QStorage {
 			orderElementKind = this.orderArray[orderCount];
 			if (orderElementKind != 0) {
 				totalQ++;
-				System.out.println("Increased totalq");
+				System.out.println("Increased totalq " + totalQ);
 //				System.out.println("qStorage orderElementKind" + orderElementKind);
 				if (orderElementKind == tf) {
 					this.tfArray[tfCount] = json.fromJson(fileIn.readLine(), TrueFalse.class);
@@ -145,6 +148,7 @@ public class QStorage {
 				orderCount++;
 			}
 		}
+		isDoneReading = true;
 		fileIn.close();
 		orderCount = 0;
 		tfCount = 0;

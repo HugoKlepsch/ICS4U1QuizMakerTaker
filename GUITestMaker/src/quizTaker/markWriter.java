@@ -24,7 +24,7 @@ public class markWriter {
 	public final static int unanswered = 0;
 	public final static int correct = 1;
 	public final static int incorrect = 2;
-	int totalQuestions = 300;
+	int totalQuestions = 0;
 	double average;
 	String userName;
 	String filename;
@@ -39,8 +39,9 @@ public class markWriter {
 		this.filename = filename;
 		this.userName = userName;
 		
-//		this.totalQuestions = qstorage.getNumQues();
-		questionStatus = new int[totalQuestions];
+		this.totalQuestions = QStorage.totalQ;
+		System.out.println("totalQuestions" + totalQuestions);
+		questionStatus = new int[this.totalQuestions];
 		for (int i = 0; i < questionStatus.length; i++) {
 			questionStatus[i] = unanswered;
 		}
@@ -53,8 +54,11 @@ public class markWriter {
 		this.filename = filename;
 		this.userName = "No Name Entered";
 //		this.totalQuestions = qstorage.getNumQues();
+		this.totalQuestions = QStorage.totalQ;
+		System.out.println("totalQuestions" + totalQuestions);
+
 		System.out.println(this.totalQuestions);
-		questionStatus = new int[QuizTaker.qCount];
+		questionStatus = new int[this.totalQuestions];
 		for (int i = 0; i < questionStatus.length; i++) {
 			questionStatus[i] = unanswered;
 		}
@@ -67,7 +71,10 @@ public class markWriter {
 		this.filename = filename;
 		this.userName = userName;
 //		this.totalQuestions = totalQuestions;
-		questionStatus = new int[totalQuestions];
+		this.totalQuestions = QStorage.totalQ;
+		System.out.println("totalQuestions" + totalQuestions);
+
+		questionStatus = new int[this.totalQuestions];
 		for (int i = 0; i < questionStatus.length; i++) {
 			questionStatus[i] = unanswered;
 		}
@@ -81,7 +88,10 @@ public class markWriter {
 		this.filename = filename;
 		this.userName = "No Name Entered";
 //		this.totalQuestions = totalQuestions;
-		questionStatus = new int[totalQuestions];
+		this.totalQuestions = QStorage.totalQ;
+		System.out.println("totalQuestions" + totalQuestions);
+
+		questionStatus = new int[this.totalQuestions];
 		for (int i = 0; i < questionStatus.length; i++) {
 			questionStatus[i] = unanswered;
 		}	
@@ -92,7 +102,7 @@ public class markWriter {
 	 * @param questionStatus the questionStatus to set
 	 */
 	public void setQuestionStatus(int status, int index) {
-		System.out.println(index - 1);
+		System.out.println("index - 1 = " + (index - 1));
 		this.questionStatus[index - 1] = status;
 	}
 	/**

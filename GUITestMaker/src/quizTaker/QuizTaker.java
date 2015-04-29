@@ -53,7 +53,7 @@ public class QuizTaker {
 				}
 			}
 		});
-		markWriter = new markWriter(qStorage, "QuizResult.quiz");
+		
 	}
 	
 	private static class ButtonHandler implements ActionListener{
@@ -75,6 +75,17 @@ public class QuizTaker {
 	}
 	private void intialize() throws IOException{
 		qStorage.readFile();
+		int a = 9;
+		int b = 4;
+		while (!qStorage.isDoneReading) {
+			//swap for lels
+			a = a + b;
+			b = a - b;
+			a = a - b;
+			System.out.println(a);
+			System.out.println(b);
+		}
+		markWriter = new markWriter(qStorage, "QuizResult.quiz");
 		frame = new JFrame();
 		Toolkit tk = Toolkit.getDefaultToolkit();
 		Dimension dm = tk.getScreenSize();
