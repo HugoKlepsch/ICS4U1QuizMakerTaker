@@ -40,7 +40,7 @@ public class markWriter {
 		this.userName = userName;
 		
 		this.totalQuestions = QStorage.totalQ;
-		System.out.println("totalQuestions" + totalQuestions);
+//		System.out.println("totalQuestions" + totalQuestions);
 		questionStatus = new int[this.totalQuestions];
 		for (int i = 0; i < questionStatus.length; i++) {
 			questionStatus[i] = unanswered;
@@ -55,7 +55,7 @@ public class markWriter {
 		this.userName = "No Name Entered";
 //		this.totalQuestions = qstorage.getNumQues();
 		this.totalQuestions = QStorage.totalQ;
-		System.out.println("totalQuestions" + totalQuestions);
+//		System.out.println("totalQuestions" + totalQuestions);
 
 		System.out.println(this.totalQuestions);
 		questionStatus = new int[this.totalQuestions];
@@ -72,7 +72,7 @@ public class markWriter {
 		this.userName = userName;
 //		this.totalQuestions = totalQuestions;
 		this.totalQuestions = QStorage.totalQ;
-		System.out.println("totalQuestions" + totalQuestions);
+//		System.out.println("totalQuestions" + totalQuestions);
 
 		questionStatus = new int[this.totalQuestions];
 		for (int i = 0; i < questionStatus.length; i++) {
@@ -89,7 +89,7 @@ public class markWriter {
 		this.userName = "No Name Entered";
 //		this.totalQuestions = totalQuestions;
 		this.totalQuestions = QStorage.totalQ;
-		System.out.println("totalQuestions" + totalQuestions);
+//		System.out.println("totalQuestions" + totalQuestions);
 
 		questionStatus = new int[this.totalQuestions];
 		for (int i = 0; i < questionStatus.length; i++) {
@@ -102,7 +102,7 @@ public class markWriter {
 	 * @param questionStatus the questionStatus to set
 	 */
 	public void setQuestionStatus(int status, int index) {
-		System.out.println("index - 1 = " + (index - 1));
+//		System.out.println("index - 1 = " + (index - 1));
 		this.questionStatus[index - 1] = status;
 	}
 	/**
@@ -134,7 +134,7 @@ public class markWriter {
 	 * @return the average
 	 */
 	public double getAverage() {
-		return ((double) getCorrectCount() / totalQuestions);
+		return ((double) getCorrectCount() / totalQuestions) * 100;
 	}
 	/**
 	 * @return the userName

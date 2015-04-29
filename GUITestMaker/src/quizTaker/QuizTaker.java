@@ -13,6 +13,7 @@ import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
@@ -27,7 +28,7 @@ import quizMaker.TFGUI;
 
 public class QuizTaker {
 	public static JFrame frame;
-	private static JPanel mainPanel;
+	private static JPanel mainPanel, userNamePanel, userNameHelpPanel;
 	private static Color puce = new Color(0xcc8899);
 	public static Font defaultFont = QuizMaker.defaultFont;
 	public static Font smallFont = QuizMaker.smallFont;
@@ -35,7 +36,9 @@ public class QuizTaker {
 	public static QStorage qStorage = new QStorage("quiz.quiz");
 	public static JButton nextButt;
 	public static JButton quitButt;
-	public static JTextArea allA;
+	public static JTextArea allA, userName;
+	public static JButton saveNameButt;
+	public static JLabel userNameHelp;
 	public static int qCount = 0;
 	public static markWriter markWriter;
 	
@@ -64,6 +67,8 @@ public class QuizTaker {
 				QuizTaker.openNextQ();
 			} else if (e.getSource() == quitButt) {
 				frame.dispose();
+			} else if (e.getSource() == saveNameButt) {
+				markWriter.setUserName(userName.getText());
 			}
 			
 		}
@@ -104,11 +109,27 @@ public class QuizTaker {
 		allA = new JTextArea();
 		allA.setFont(new Font("Ubuntu", 1, 14));
 		allA.setEditable(false);
+		userNamePanel = new JPanel(new GridLayout(0, 1, 10, 10));
+		userNameHelpPanel = new JPanel(new GridLayout(1, 2, 10, 10));
+		userNameHelp = new JLabel("Enter your name");
+		userNameHelp.setFont(QuizMaker.defaultFont);
+		userName = new JTextArea();
+		userName.setEditable(true);
+		userName.setFont(defaultFont);
+		saveNameButt = new JButton("Save name");
+		saveNameButt.setFont(defaultFont);
+		saveNameButt.addActionListener(onClick);
+
 		
 		frame.add(mainPanel);
 		mainPanel.add(allA);
 		mainPanel.add(quitButt);
 		mainPanel.add(nextButt);
+		mainPanel.add(userNamePanel);
+		userNamePanel.add(userNameHelpPanel);
+		userNameHelpPanel.add(userNameHelp);
+		userNameHelpPanel.add(saveNameButt);
+		userNamePanel.add(userName);
 	}
 	/**
 		 * @author hugo
