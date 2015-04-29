@@ -34,10 +34,9 @@ public class QuizTaker {
 	public static ButtonHandler onClick = new ButtonHandler();
 	public static QStorage qStorage = new QStorage("quiz.quiz");
 	public static JButton nextButt;
-	public static JButton checkAnsButt;
 	public static JButton quitButt;
 	public static JTextArea allA;
-	private static int qCount = 0;
+	public static int qCount = 0;
 	public static markWriter markWriter;
 	
 
@@ -63,8 +62,6 @@ public class QuizTaker {
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == nextButt) {
 				QuizTaker.openNextQ();
-			} else if (e.getSource() == checkAnsButt) {
-				
 			} else if (e.getSource() == quitButt) {
 				frame.dispose();
 			}
@@ -91,8 +88,6 @@ public class QuizTaker {
 		
 		nextButt = new JButton("Next Question");
 		nextButt.addActionListener(onClick);
-		checkAnsButt = new JButton("Check Answers");
-		checkAnsButt.addActionListener(onClick);
 		quitButt = new JButton("Quit Quiz");
 		quitButt.addActionListener(onClick);
 		allA = new JTextArea();
@@ -102,7 +97,6 @@ public class QuizTaker {
 		frame.add(mainPanel);
 		mainPanel.add(allA);
 		mainPanel.add(quitButt);
-		mainPanel.add(checkAnsButt);
 		mainPanel.add(nextButt);
 	}
 	/**

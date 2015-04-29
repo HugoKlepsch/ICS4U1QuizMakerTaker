@@ -24,7 +24,7 @@ public class markWriter {
 	public final static int unanswered = 0;
 	public final static int correct = 1;
 	public final static int incorrect = 2;
-	int totalQuestions = 0;
+	int totalQuestions = 300;
 	double average;
 	String userName;
 	String filename;
@@ -39,8 +39,8 @@ public class markWriter {
 		this.filename = filename;
 		this.userName = userName;
 		
-		this.totalQuestions = qstorage.getNumQues();
-		questionStatus = new int[qstorage.getNumQues()];
+//		this.totalQuestions = qstorage.getNumQues();
+		questionStatus = new int[totalQuestions];
 		for (int i = 0; i < questionStatus.length; i++) {
 			questionStatus[i] = unanswered;
 		}
@@ -52,8 +52,9 @@ public class markWriter {
 	public markWriter(QStorage qstorage, String filename) throws IOException {
 		this.filename = filename;
 		this.userName = "No Name Entered";
-		this.totalQuestions = qstorage.getNumQues();
-		questionStatus = new int[qstorage.getNumQues()];
+//		this.totalQuestions = qstorage.getNumQues();
+		System.out.println(this.totalQuestions);
+		questionStatus = new int[QuizTaker.qCount];
 		for (int i = 0; i < questionStatus.length; i++) {
 			questionStatus[i] = unanswered;
 		}
@@ -65,7 +66,7 @@ public class markWriter {
 	public markWriter(int totalQuestions, String userName, String filename) throws IOException {
 		this.filename = filename;
 		this.userName = userName;
-		this.totalQuestions = totalQuestions;
+//		this.totalQuestions = totalQuestions;
 		questionStatus = new int[totalQuestions];
 		for (int i = 0; i < questionStatus.length; i++) {
 			questionStatus[i] = unanswered;
@@ -79,18 +80,20 @@ public class markWriter {
 	public markWriter(int totalQuestions, String filename) throws IOException {
 		this.filename = filename;
 		this.userName = "No Name Entered";
-		this.totalQuestions = totalQuestions;
+//		this.totalQuestions = totalQuestions;
 		questionStatus = new int[totalQuestions];
 		for (int i = 0; i < questionStatus.length; i++) {
 			questionStatus[i] = unanswered;
-		}	}
+		}	
+	}
 	
 	
 	/**
 	 * @param questionStatus the questionStatus to set
 	 */
 	public void setQuestionStatus(int status, int index) {
-		this.questionStatus[index] = status;
+		System.out.println(index - 1);
+		this.questionStatus[index - 1] = status;
 	}
 	/**
 	 * @return the correctCount

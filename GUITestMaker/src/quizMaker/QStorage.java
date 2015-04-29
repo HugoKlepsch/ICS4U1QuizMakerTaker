@@ -29,6 +29,7 @@ public class QStorage {
 	private int mcCount = 0;
 	private int saCount = 0;
 	private int orderCount = 0;
+	private int totalQ = 0;
 
 	private TrueFalse[] tfArray = new TrueFalse[100];
 	private MultiChoice[] mcArray = new MultiChoice[100];
@@ -70,7 +71,9 @@ public class QStorage {
 	
 	
 	public int getNumQues(){
-		return orderCount;
+		System.out.println("totalQ" + totalQ);
+		return totalQ;
+		
 	}
 	
 	public int getNumTF(){
@@ -124,6 +127,8 @@ public class QStorage {
 			
 			orderElementKind = this.orderArray[orderCount];
 			if (orderElementKind != 0) {
+				totalQ++;
+				System.out.println("Increased totalq");
 //				System.out.println("qStorage orderElementKind" + orderElementKind);
 				if (orderElementKind == tf) {
 					this.tfArray[tfCount] = json.fromJson(fileIn.readLine(), TrueFalse.class);
