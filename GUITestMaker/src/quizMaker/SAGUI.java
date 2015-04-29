@@ -34,7 +34,7 @@ public class SAGUI {
 	static JButton cancelButt, saveButt;
 	static ButtonHandler onClick = new ButtonHandler();
 	
-	
+	//our button handler class
 	private static class ButtonHandler implements ActionListener {
 		boolean hasEnteredQuestion = false;
 		boolean hasEnteredAns = false;
@@ -47,6 +47,7 @@ public class SAGUI {
 			if (e.getSource() == cancelButt) {
 				qRoot.dispose();
 				hasEnteredAns = hasEnteredQuestion = false;
+			// creates a short answer question and saves it in the qStorage object and closes the window
 			} else if (e.getSource() == saveButt) {
 				ShortAnswer tempObj = new ShortAnswer(questionBox.getText(), ansBox.getText());
 				QuizMaker.qStorage.addSA(tempObj);
@@ -72,6 +73,7 @@ public class SAGUI {
 	 * 
 	 */
 	public SAGUI() {
+		//sets up the GUI
 		qRoot = new JFrame("Short answer question");
 		Toolkit tk = Toolkit.getDefaultToolkit();
 		Dimension dm = tk.getScreenSize();
