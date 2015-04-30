@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -25,7 +26,7 @@ import quizMaker.QuizMaker;
 
 
 
-//the main quix taking class
+//the main quiz taking class
 public class QuizTaker {
 	//all GUI elements
 	public static JFrame frame;
@@ -103,7 +104,7 @@ public class QuizTaker {
 		Dimension dm = tk.getScreenSize();
 		frame.setBounds(0, 0, dm.width, dm.height);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setExtendedState(frame.MAXIMIZED_BOTH);
+		frame.setExtendedState(Frame.MAXIMIZED_BOTH);
 
 		
 		mainPanel = new JPanel(new GridLayout(0, 2, 10, 10));
