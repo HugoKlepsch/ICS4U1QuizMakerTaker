@@ -12,22 +12,17 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
-
-import questions.TrueFalse;
 
 
 /**
@@ -58,8 +53,8 @@ public class QuizMaker {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					QuizMaker window = new QuizMaker();
-					window.frame.setVisible(true);
+					new QuizMaker();
+					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -87,7 +82,7 @@ public class QuizMaker {
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
-				QuizMaker.frame.dispose();
+				frame.dispose();
 			}
 			
 			
@@ -112,7 +107,7 @@ public class QuizMaker {
 		Dimension dm = tk.getScreenSize();
 		frame.setBounds(0, 0, dm.width, dm.height);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setExtendedState(frame.MAXIMIZED_BOTH);
+		frame.setExtendedState(Frame.MAXIMIZED_BOTH);
 
 		
 		mainPanel = new JPanel(new GridLayout(0, 3, 10, 10));
@@ -179,7 +174,7 @@ public class QuizMaker {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MCGUI qMaker = new MCGUI();
+					new MCGUI();
 					
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -199,7 +194,7 @@ public class QuizMaker {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					SAGUI qMaker = new SAGUI();
+					new SAGUI();
 					
 				} catch (Exception e) {
 					e.printStackTrace();
