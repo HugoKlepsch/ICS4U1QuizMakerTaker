@@ -1,8 +1,8 @@
 /*
 		 Title: SAGUITaker.java
-		 Programmer: hugo
+		 Programmer: graham
 		 Date of creation: Apr 25, 2015
-		 Description: 
+		 Description: the GUI for answering short answer questions
 */
 
 
@@ -32,10 +32,11 @@ import quizMaker.QuizMaker;
 
 
 /**
- * @author hugo
+ * @author graham
  *
  */
 public class SAGUITaker {
+	//all GUI elements
 	static ShortAnswer origQues;
 	static JFrame qRoot;
 	static JPanel mainPanel, qPanel, ansPanel, buttPanel;
@@ -43,8 +44,9 @@ public class SAGUITaker {
 	static JButton submitButt, closeButt;
 	static JTextField userAns;
 	static ButtonHandler onCLick = new ButtonHandler();
-	
+	//button handler class
 	private static class ButtonHandler implements ActionListener{
+		//setting colours for later
 		Color correct = new Color(0x0ff00);
 		Color incorrect = new Color(0xff0000);
 		Color black = new Color(0x000000);
@@ -53,6 +55,7 @@ public class SAGUITaker {
 		 */
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			//submits question and checks answer
 			if (e.getSource() == submitButt) {
 				submitButt.setEnabled(false);
 				closeButt.setEnabled(true);
@@ -64,11 +67,12 @@ public class SAGUITaker {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				//TODO save answer
+			//closes window
 			} else if (e.getSource() == closeButt) {
 				qRoot.dispose();
 			}
 		}
+		//checks the user's answer and stores it and displays in window
 		private void checkAns() throws IOException{
 			String userAnsText = userAns.getText();
 			if(userAnsText.equalsIgnoreCase("")){
@@ -92,6 +96,7 @@ public class SAGUITaker {
 			QuizTaker.markWriter.writeMarks();
 		}
 	}
+	//constructor that intializes GUI elements
 	public SAGUITaker(ShortAnswer question){
 		origQues = question;
 		
@@ -107,9 +112,9 @@ public class SAGUITaker {
 		
 		ansHelp = new JLabel("Enter the correct answer: ");
 		ansHelp.setFont(QuizMaker.smallFont);
-		this.question = new JLabel();
-		this.question.setFont(QuizMaker.defaultFont);
-		this.question.setText(origQues.getQuestion());
+		SAGUITaker.question = new JLabel();
+		SAGUITaker.question.setFont(QuizMaker.defaultFont);
+		SAGUITaker.question.setText(origQues.getQuestion());
 		userAns = new JTextField();
 		userAns.setFont(QuizMaker.defaultFont);
 		correctAns = new JLabel("");
@@ -126,7 +131,7 @@ public class SAGUITaker {
 		mainPanel.add(ansPanel);
 		mainPanel.add(buttPanel);
 		
-		qPanel.add(this.question);
+		qPanel.add(SAGUITaker.question);
 		ansPanel.add(ansHelp);
 		ansPanel.add(userAns);
 		ansPanel.add(correctAns);
