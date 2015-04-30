@@ -69,6 +69,12 @@ public class QuizTaker {
 				frame.dispose();
 			} else if (e.getSource() == saveNameButt) {
 				markWriter.setUserName(userName.getText());
+				try {
+					markWriter.writeMarks();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 			
 		}
