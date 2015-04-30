@@ -49,8 +49,8 @@ public class QuizTaker {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					QuizTaker window = new QuizTaker();
-					window.frame.setVisible(true);
+					new QuizTaker();
+					QuizTaker.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

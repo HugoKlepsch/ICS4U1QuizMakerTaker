@@ -164,6 +164,7 @@ public class markWriter {
 		 * @Description: ( ͡° ͜ʖ ͡°)
 		 */
 	public void writeMarks() throws IOException {
+		String date = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date())
 		fileout = new PrintWriter(new FileWriter(this.filename));
 		fileout.println("UserName: " + userName);
 		fileout.println(new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date()));
