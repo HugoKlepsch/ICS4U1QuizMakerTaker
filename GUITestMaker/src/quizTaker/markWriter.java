@@ -30,6 +30,7 @@ public class markWriter {
 	String filename;
 	PrintWriter fileout;
 	int[] questionStatus;
+	String startDate;
 	
 	/**
 	 * @throws IOException 
@@ -45,6 +46,7 @@ public class markWriter {
 		for (int i = 0; i < questionStatus.length; i++) {
 			questionStatus[i] = unanswered;
 		}
+		startDate = new SimpleDateFormat("yyyy.MM.dd HH.mm.ss").format(new Date());
 	}
 	/**
 	 * @throws IOException 
@@ -62,6 +64,7 @@ public class markWriter {
 		for (int i = 0; i < questionStatus.length; i++) {
 			questionStatus[i] = unanswered;
 		}
+		startDate = new SimpleDateFormat("yyyy.MM.dd HH.mm.ss").format(new Date());
 	}
 	/**
 	 * @throws IOException 
@@ -78,7 +81,7 @@ public class markWriter {
 		for (int i = 0; i < questionStatus.length; i++) {
 			questionStatus[i] = unanswered;
 		}
-		
+		startDate = new SimpleDateFormat("yyyy.MM.dd HH.mm.ss").format(new Date());
 	}
 	/**
 	 * @throws IOException 
@@ -95,6 +98,7 @@ public class markWriter {
 		for (int i = 0; i < questionStatus.length; i++) {
 			questionStatus[i] = unanswered;
 		}	
+		startDate = new SimpleDateFormat("yyyy.MM.dd HH.mm.ss").format(new Date());
 	}
 	
 	
@@ -164,10 +168,9 @@ public class markWriter {
 		 * @Description: ( ͡° ͜ʖ ͡°)
 		 */
 	public void writeMarks() throws IOException {
-		String date = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date());
-		fileout = new PrintWriter(new FileWriter(userName + " - " + date));
+		fileout = new PrintWriter(new FileWriter(userName + " - " + startDate));
 		fileout.println("UserName: " + userName);
-		fileout.println("Date taken: " + date);
+		fileout.println("Date taken: " + startDate);
 		fileout.println("Average: %" + getAverage());
 		fileout.println("Mark: " + getCorrectCount() + "/" + getTotalQuestions());
 		for (int i = 0; i < questionStatus.length; i++) {
