@@ -42,7 +42,7 @@ public class MultiChoice {
 		this.question = question;
 		this.options = options;
 		// assigns the correct index based on the letter
-		if (correctLetter.equalsIgnoreCase("a")) {
+		if (correctLetter.equalsIgnoreCase("a")) { // this is a block that converts the letters a - e into numbers 0-4
 			correctInd = 0;
 		} else if (correctLetter.equalsIgnoreCase("b")) {
 			correctInd = 1;
@@ -63,7 +63,7 @@ public class MultiChoice {
 	 * @param quesNum is the number identifier for the question
 	 */
 	public MultiChoice(String question, String[] options, int correctInd, int quesNum) {
-		super();
+		super(); //we all need a superhero 
 		this.question = question;
 		this.options = options;
 		this.correctInd = correctInd;
@@ -193,8 +193,10 @@ public class MultiChoice {
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
-	public String toString() {
-
+	public String toString() { 
+		/*
+		 * this method is used to give an attractive output on the screen after the user has added the question. 
+		 */
 		String question = "Question: " + this.question + "\n";
 		String answer = "Answer: " + ABCDE[this.correctInd] + "\n";
 
