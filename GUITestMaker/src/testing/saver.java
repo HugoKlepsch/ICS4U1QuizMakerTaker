@@ -2,7 +2,7 @@
 		 Title: saver.java
 		 Programmer: hugo
 		 Date of creation: Apr 20, 2015
-		 Description: 
+		 Description: this is a program used to test how to use the google gson library. Word for the wise, this library is AWESOME bookmark and download. 
 */
 
 
@@ -16,8 +16,6 @@ import java.io.PrintWriter;
 
 import com.google.gson.Gson;
 
-import questions.MultiChoice;
-import questions.ShortAnswer;
 import questions.TrueFalse;
 
 /**
@@ -32,7 +30,7 @@ public class saver {
 		 * Date of creation: Apr 10, 2015 
 		 * @param: None
 		 * @return: None
-	 * @throws IOException 
+		 * @throws IOException 
 		 * @Description: ( ͡° ͜ʖ ͡°)
 		 */
 	public static void main(String[] args) throws IOException {
@@ -63,7 +61,7 @@ public class saver {
 		TrueFalse totallyNew = json.fromJson(fileIn.readLine(), TrueFalse.class);
 		
 		System.out.println(totallyNew.getQuestion());
-		
+		fileIn.close();
 	}
 
 }
