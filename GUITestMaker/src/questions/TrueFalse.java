@@ -2,7 +2,7 @@
 		 Title: TrueFalse.java
 		 Programmer: hugo
 		 Date of creation: Apr 20, 2015
-		 Description: 
+		 Description: class to hold the all the information required to hold a true / false question
 */
 
 
@@ -13,10 +13,10 @@ package questions;
  *
  */
 public class TrueFalse {
-	String type = "TF";
+	String type = "TF"; // short identifier for easy identification in the quiz.quiz file
 	String question;
 	boolean correctAns;
-	int quesNum;
+	int quesNum; // used to help order the questions when taking the test.
 	
 	/**
 	 * @param question is the question
@@ -81,11 +81,11 @@ public class TrueFalse {
 
 	/**
 	 * @author Graham
-	 * @param answer the user's answer to check
+	 * @param userAnswer the user's answer to check
 	 * @return true if correct, false if incorrect
 	 */
-	public boolean checkAns(boolean answer){
-		if(answer == this.correctAns)
+	public boolean checkAns(boolean userAnswer){
+		if(userAnswer == this.correctAns)
 			return true;
 		else
 			return false;
@@ -96,6 +96,9 @@ public class TrueFalse {
 	 */
 	@Override
 	public String toString() {
+		/*
+		 * this method is used to give an attractive output on the screen after the user has added the question. 
+		 */
 		String question = "Question: " + this.question + "\n";
 		String answer = "Answer: " + this.correctAns + "\n";
 		return question + answer;
