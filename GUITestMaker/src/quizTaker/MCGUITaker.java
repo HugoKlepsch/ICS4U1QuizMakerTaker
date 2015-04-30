@@ -2,7 +2,7 @@
 		 Title: MCGUITaker.java
 		 Programmer: hugo
 		 Date of creation: Apr 25, 2015
-		 Description: 
+		 Description: the GUI for answering multiple choice questions
 */
 
 
@@ -30,6 +30,7 @@ import quizMaker.QuizMaker;
  * @author hugo
  *
  */
+//all GUI elements
 public class MCGUITaker {
 	public static MultiChoice origQues;
 	static JFrame qRoot;
@@ -39,8 +40,9 @@ public class MCGUITaker {
 	static JRadioButton rad1, rad2, rad3, rad4;
 	static JButton closeButt, submitButt;
 	static ButtonHandler onClick = new ButtonHandler();	
-	
+	//button handler class
 	private static class ButtonHandler implements ActionListener{
+		//setting colours for later
 		Color correct = new Color(0x0ff00);
 		Color incorrect = new Color(0xff0000);
 		/* (non-Javadoc)
@@ -48,6 +50,7 @@ public class MCGUITaker {
 		 */
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			//submits question and checks answer
 			if (e.getSource() == submitButt) {
 				submitButt.setEnabled(false);
 				closeButt.setEnabled(true);
@@ -61,12 +64,12 @@ public class MCGUITaker {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				//TODO save
+			//closes window
 			} else if (e.getSource() == closeButt) {
 				qRoot.dispose();
 			}
 		}
-		
+		//checks the user's answer and stores it and displays in window
 		private void checkAns() throws IOException {
 			int correctInd = MCGUITaker.origQues.getCorrectInd();
 			int selectedInd = 0;
@@ -94,7 +97,7 @@ public class MCGUITaker {
 		}
 		
 	}
-	
+	//constructor that initializes GUI elements
 	public MCGUITaker(MultiChoice question){
 		origQues = question;
 		
