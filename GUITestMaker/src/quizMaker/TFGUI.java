@@ -57,23 +57,24 @@ public class TFGUI {
 																				// the user selected false
 				String question = questionBox.getText();
 				TrueFalse tempQues = new TrueFalse(question, correctAns);
-				QuizMaker.qStorage.addTF(tempQues); //adding the question to the question database
-				selectedQ = selectedTF = false; //reseting variables
-				QuizMaker.allQ.setText(QuizMaker.allQ.getText() + tempQues.toString()); //updating the main window question feed
-				qRoot.dispose(); //kills the window but keeps the program running. 
+				QuizMaker.qStorage.addTF(tempQues); // adding the question to the question database
+				selectedQ = selectedTF = false; // reseting variables
+				QuizMaker.allQ.setText(QuizMaker.allQ.getText() + tempQues.toString()); // updating the main window
+																						// question feed
+				qRoot.dispose(); // kills the window but keeps the program running.
 			} else if (e.getSource() == cancelButt) {
-				selectedQ = selectedTF = false; //reset variabels
-				qRoot.dispose(); //kill window
+				selectedQ = selectedTF = false; // reset variabels
+				qRoot.dispose(); // kill window
 
 			} else if (e.getSource() == trueCorrect || e.getSource() == falseCorrect) {
 				selectedTF = true;
 				if (selectedTF && selectedQ) {
-					saveButt.setEnabled(true); //enable the save button if the user has entered both Q and A
+					saveButt.setEnabled(true); // enable the save button if the user has entered both Q and A
 				}
 			} else if (e.getSource() == questionBox) {
 				selectedQ = true;
 				if (selectedTF && selectedQ) {
-					saveButt.setEnabled(true); //enable the save button if the user has entered both Q and A
+					saveButt.setEnabled(true); // enable the save button if the user has entered both Q and A
 				}
 			}
 
@@ -90,25 +91,25 @@ public class TFGUI {
 		qRoot = new JFrame("True/False question");
 		Toolkit tk = Toolkit.getDefaultToolkit();
 		Dimension dm = tk.getScreenSize();
-		qRoot.setBounds(0, 0, (int) (dm.width / 1.2), (dm.height / 2));
-		// qRoot.setDefaultCloseOperation(JFrame.);
+		qRoot.setBounds(0, 0, (int) (dm.width / 1.2), (dm.height / 2)); // window dimensions are based off ratios with
+																		// the screen res
 
 		tfHelpText = new JLabel("Correct answer ===>");
 		tfHelpText.setFont(QuizMaker.defaultFont);
 		qHelpText = new JLabel("Enter question then hit ENTER");
 		qHelpText.setFont(QuizMaker.defaultFont);
 
-		group = new ButtonGroup();
+		group = new ButtonGroup(); // the buttongroup helps ensure only one radio button is selected at a time.
 
 		qMainPanel = new JPanel(new GridLayout(0, 1));
 		trueFalsePanel = new JPanel(new GridLayout(0, 2));
-		trueFalseArrayPanel = new JPanel(new GridLayout(1, 2));
+		trueFalseArrayPanel = new JPanel(new GridLayout(1, 2)); // fancy panel sizes to make it look decent.
 		qBoxPanel = new JPanel(new GridLayout(0, 2));
 		buttPanel = new JPanel(new GridLayout(0, 2, 10, 10));
 
 		questionBox = new JTextField();
 		questionBox.setFont(QuizMaker.defaultFont);
-		questionBox.addActionListener(onClick);
+		questionBox.addActionListener(onClick); // the action listener runs when the user hits enter in the text box.
 		trueCorrect = new JRadioButton("True");
 		trueCorrect.setFont(QuizMaker.defaultFont);
 		trueCorrect.addActionListener(onClick);
@@ -137,7 +138,8 @@ public class TFGUI {
 		qBoxPanel.add(questionBox, 1);
 		buttPanel.add(cancelButt, 0);
 		buttPanel.add(saveButt, 1);
-		saveButt.setEnabled(false);
+		saveButt.setEnabled(false); // by default the save button is not enabled until the user enters enough
+									// information.
 
 		qRoot.setVisible(true);
 	}
