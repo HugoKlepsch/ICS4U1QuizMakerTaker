@@ -2,7 +2,7 @@
 		 Title: TFGUITaker.java
 		 Programmer: hugo
 		 Date of creation: Apr 25, 2015
-		 Description: 
+		 Description: the GUI for answering true false questons
 */
 
 
@@ -31,6 +31,7 @@ import quizMaker.QuizMaker;
  *
  */
 public class TFGUITaker {
+	//GUI elements
 	static TrueFalse origQues;
 	static JFrame qRoot;
 	static JPanel mainPanel, qPanel, ansPanel, buttPanel;
@@ -39,8 +40,9 @@ public class TFGUITaker {
 	static JRadioButton ansTrueRad, ansFalseRad;
 	static JButton submitButt, closeButt;
 	static ButtonHandler onCLick = new ButtonHandler();
-	
+	//button handler class
 	private static class ButtonHandler implements ActionListener{
+		//sets up correct and incorrect colours
 		Color correct = new Color(0x0ff00);
 		Color incorrect = new Color(0xff0000);
 		/* (non-Javadoc)
@@ -48,8 +50,10 @@ public class TFGUITaker {
 		 */
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			//enables submitting questions if a answer is picked
 			if (e.getSource() == ansTrueRad || e.getSource() == ansFalseRad) {
 				submitButt.setEnabled(true);
+			//submits and checks answer
 			} else if (e.getSource() == submitButt) {
 				submitButt.setEnabled(false);
 				closeButt.setEnabled(true);
@@ -61,12 +65,12 @@ public class TFGUITaker {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				//TODO save answer
+			//closes window
 			} else if (e.getSource() == closeButt) {
 				qRoot.dispose();
 			}
 		}
-		
+		//checks the answer and saves the answer to write to file
 		private void checkAns() throws IOException {
 			if (ansTrueRad.isSelected()) { //if true is selected,
 				if (origQues.checkAns(true)) { //and true is correct
@@ -92,7 +96,7 @@ public class TFGUITaker {
 		}
 		
 	}
-	
+	//constructor initializes GUI elements
 	public TFGUITaker(TrueFalse question){
 		origQues = question;
 		
@@ -108,9 +112,9 @@ public class TFGUITaker {
 		
 		ansHelp = new JLabel("Select the correct answer: ");
 		ansHelp.setFont(QuizMaker.smallFont);
-		this.question = new JLabel();
-		this.question.setFont(QuizMaker.defaultFont);
-		this.question.setText(question.getQuestion());
+		TFGUITaker.question = new JLabel();
+		TFGUITaker.question.setFont(QuizMaker.defaultFont);
+		TFGUITaker.question.setText(question.getQuestion());
 //		System.out.println(question.getQuestion());
 		group = new ButtonGroup();
 		ansTrueRad = new JRadioButton("True");
@@ -133,7 +137,7 @@ public class TFGUITaker {
 		mainPanel.add(ansPanel);
 		mainPanel.add(buttPanel);
 		
-		qPanel.add(this.question);
+		qPanel.add(TFGUITaker.question);
 		ansPanel.add(ansHelp);
 		ansPanel.add(ansTrueRad);
 		ansPanel.add(ansFalseRad);
