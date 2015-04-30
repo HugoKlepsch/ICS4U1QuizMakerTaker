@@ -22,11 +22,12 @@ import questions.ShortAnswer;
 import questions.TrueFalse;
 import quizMaker.QStorage;
 import quizMaker.QuizMaker;
-import quizMaker.TFGUI;
 
 
 
+//the main quix taking class
 public class QuizTaker {
+	//all GUI elements
 	public static JFrame frame;
 	private static JPanel mainPanel, userNamePanel, userNameHelpPanel;
 	private static Color puce = new Color(0xcc8899);
@@ -42,9 +43,7 @@ public class QuizTaker {
 	public static int qCount = 0;
 	public static markWriter markWriter;
 	
-
-	//added a comment to commit lel
-	
+	//main, runs the constructor and sets frame visible
 	public static void main(String[] args) throws IOException {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -58,15 +57,18 @@ public class QuizTaker {
 		});
 		
 	}
-	
+	//buttonhandler class
 	private static class ButtonHandler implements ActionListener{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			//opens next question
 			if (e.getSource() == nextButt) {
 				QuizTaker.openNextQ();
+			//exits the program
 			} else if (e.getSource() == quitButt) {
 				frame.dispose();
+			//saves name to file
 			} else if (e.getSource() == saveNameButt) {
 				markWriter.setUserName(userName.getText());
 				try {
@@ -80,21 +82,20 @@ public class QuizTaker {
 		}
 		
 	}
-	
+	//constructor, runs initialize
 	public QuizTaker() throws IOException{
 		intialize();
 	}
+	//Initializes all GUI elements
 	private void intialize() throws IOException{
 		qStorage.readFile();
 		int a = 9;
 		int b = 4;
+		//delays until done reading file
 		while (!qStorage.isDoneReading) {
-			//swap for lels
 			a = a + b;
 			b = a - b;
 			a = a - b;
-			System.out.println(a);
-			System.out.println(b);
 		}
 		markWriter = new markWriter(qStorage, "QuizResult.quiz");
 		frame = new JFrame();
@@ -142,12 +143,13 @@ public class QuizTaker {
 		 * Date of creation: Apr 10, 2015 
 		 * @param: None
 		 * @return: None
-		 * @Description: ( ͡° ͜ʖ ͡°)
+		 * @Description: opens the next question type for entry
 		 */
 	public static void openNextQ() {
 		qCount++;
 		int result = qStorage.getCurrentQType();
 //		System.out.println("openNextQ result" + result);
+		//switch case finds the question type from qStorage and opens up the approiate GUI window
 		switch (result) {
 		case QStorage.tf:
 			TrueFalse tempTFQ = qStorage.getNextQTF();
