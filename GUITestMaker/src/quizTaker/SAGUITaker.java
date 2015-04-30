@@ -96,7 +96,7 @@ public class SAGUITaker {
 			QuizTaker.markWriter.writeMarks();
 		}
 	}
-	//constructor that intializes GUI elements
+	//constructor that initializes GUI elements
 	public SAGUITaker(ShortAnswer question){
 		origQues = question;
 		
