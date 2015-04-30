@@ -164,12 +164,12 @@ public class markWriter {
 		 * @Description: ( ͡° ͜ʖ ͡°)
 		 */
 	public void writeMarks() throws IOException {
-		String date = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date())
-		fileout = new PrintWriter(new FileWriter(this.filename));
+		String date = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date());
+		fileout = new PrintWriter(new FileWriter(userName + " - " + date));
 		fileout.println("UserName: " + userName);
-		fileout.println(new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date()));
-		fileout.println("Average: " + getAverage());
-		fileout.println(getCorrectCount() + "/" + getTotalQuestions());
+		fileout.println("Date taken: " + date);
+		fileout.println("Average: %" + getAverage());
+		fileout.println("Mark: " + getCorrectCount() + "/" + getTotalQuestions());
 		for (int i = 0; i < questionStatus.length; i++) {
 			fileout.print("Question " + i + ": ");
 			switch (questionStatus[i]) {
