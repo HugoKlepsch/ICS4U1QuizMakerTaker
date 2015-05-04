@@ -62,7 +62,6 @@ public class TFGUITaker {
 				try {
 					checkAns();
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			//closes window
