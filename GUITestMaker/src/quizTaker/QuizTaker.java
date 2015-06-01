@@ -213,11 +213,10 @@ public class QuizTaker {
 		
 		
 		
-		EventQueue.invokeLater(new Runnable() {
+		EventQueue.invokeLater(new Runnable() { //will start a new thread
 			public void run() {
 				try {
-					
-					
+					//GUI method calls go here
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
